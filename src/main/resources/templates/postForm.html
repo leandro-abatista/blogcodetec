@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://thymeleaf.org">
+<html lang="pt" xmlns:th="http://thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 <meta charset="UTF-8">
@@ -15,6 +16,13 @@
 	rel="stylesheet"
 	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
 	crossorigin="anonymous">
+	
+	<!-- scripts do Jquery e summernote-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 </head>
 
 <body>
@@ -38,11 +46,14 @@
 			</nav>
 			
 			<div>
+				<!-- determina que será incorporado a esta página um messagemValidacao.html a parte -->
+				<th:block th:include="messagemValidacao"></th:block>
+			
 				<form method="post">
 				
 					<small class="form-text text-muted">(*) Campos Obrigatórios</small>
 					
-					<div class="mb-3">
+					<div class="mb-3" style="margin-top: 20px;">
 						<input type="text" class="form-control" name="titulo" placeholder="Título *">
 					</div>
 					
@@ -50,7 +61,7 @@
 						<input type="text" class="form-control" name="autor" placeholder="Autor *">
 					</div>
 					
-					<textarea type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+					<textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
 					
 					<button type="submit" class="btn btn-primary" style="margin-top: 20px; ">Publicar</button>
 					<a href="/posts" class="btn btn-danger" role="button" style="margin-top: 20px;">Cancelar</a>
@@ -60,6 +71,16 @@
 
 		</div>	
 	</section>
+	
+	<script type="text/javascript">
+
+		$('#summernote').summernote({
+			placeholder: 'Texto *',
+			tabsize: 2,
+			height: 300
+		});
+
+	</script>
 
 </body>
 

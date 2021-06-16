@@ -52,6 +52,7 @@ public class PostController {
 	@RequestMapping(value = "/newpost", method = RequestMethod.POST)
 	public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {//se for encontrado algum tipo de erro
+			attributes.addFlashAttribute("messagem", "Verifique se os campos obrigatórios foram preenchidos!");
 			return "redirect:/newpost";//volta para a página do newpost
 		}
 		
