@@ -21,7 +21,7 @@
 <body>
 
 	<header>
-		<nav class="navbar navbar-light bg-light">
+		<nav class="navbar navbar-light" style="background-color: #CD5C5C;">
 			<div class="container-fluid">
 				<span class="navbar-brand mb-0 h1" style="font-weight: bold;">BlogCodeTec</span>
 				<a href="/newpost" class="btn btn-primary" role="button">Novo Post</a>
@@ -33,12 +33,12 @@
 		<div class="container" style="width: 70%; padding-bottom: 30px">
 
 			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb" style="background-color: white; padding-left: 0px; font-weight: 600;">
+				<ol class="breadcrumb" style="background-color: white; padding-left: 0px; font-weight: 600; margin-top: 10px;">
 					<li class="breadcrumb-item active" aria-current="page">Posts</li>
 				</ol>
 			</nav>
 
-			<div class="card text-danger bg-dark mb-3" style="max-width: 60rem; margin-top: 20px;" th:each="post : ${posts}">
+			<div class="card shadow-sm bg-white rounded" style="max-width: 60rem; margin-top: 20px;" th:each="post : ${posts}">
 				<div class="card-body">
 					
 					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem">
@@ -48,7 +48,7 @@
 					</p>
 					
 					<a th:href="${(#mvc.url('PC#getPostDetails').arg(0, post.id)).build()}">
-						<h4 class="card-title" style="font-weight: bold; color: dange; padding-top: 5px;">
+						<h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
 							
 							<span th:text="${post.titulo}"></span>
 						
@@ -57,7 +57,7 @@
 					
 					<p class="card-text">
 						<!-- breve texto. os primeiros 400 caracteres -->
-						<span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
+						<span th:utext="${#strings.abbreviate(post.texto, 400)}"></span>
 					</p>
 					
 				</div>
