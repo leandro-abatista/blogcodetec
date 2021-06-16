@@ -23,7 +23,6 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<span class="navbar-brand mb-0 h1" style="font-weight: bold;">BlogCodeTec</span>
-				<a href="/newpost" class="btn btn-primary" role="button">Novo Post</a>
 			</div>
 		</nav>
 	</header>
@@ -33,36 +32,33 @@
 
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb" style="background-color: white; padding-left: 0px; font-weight: 600;">
-					<li class="breadcrumb-item active" aria-current="page">Posts</li>
+					<li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Novo Post</li>
 				</ol>
 			</nav>
-
-			<div class="card text-danger bg-dark mb-3" style="max-width: 60rem; margin-top: 20px;" th:each="post : ${posts}">
-				<div class="card-body">
+			
+			<div>
+				<form method="post">
+				
+					<small class="form-text text-muted">(*) Campos Obrigatórios</small>
 					
-					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem">
-						<!-- Data e Autor do post -->
-						<span th:text="${post.autor}"></span>
-						<span th:text="${post.data}"></span>
-					</p>
+					<div class="mb-3">
+						<input type="text" class="form-control" name="titulo" placeholder="Título *">
+					</div>
 					
-					<a th:href="${(#mvc.url('PC#getPostDetails').arg(0, post.id)).build()}">
-						<h4 class="card-title" style="font-weight: bold; color: dange; padding-top: 5px;">
-							
-							<span th:text="${post.titulo}"></span>
-						
-						</h4>
-					</a>
+					<div class="mb-3">
+						<input type="text" class="form-control" name="autor" placeholder="Autor *">
+					</div>
 					
-					<p class="card-text">
-						<!-- breve texto. os primeiros 400 caracteres -->
-						<span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
-					</p>
+					<textarea type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
 					
-				</div>
+					<button type="submit" class="btn btn-primary" style="margin-top: 20px; ">Publicar</button>
+					<a href="/posts" class="btn btn-danger" role="button" style="margin-top: 20px;">Cancelar</a>
+					
+				</form>
 			</div>
 
-		</div>
+		</div>	
 	</section>
 
 </body>
